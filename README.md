@@ -1,12 +1,10 @@
-# DBMS
-
 # SQL Query
 
 ```sql
 SELECT * FROM exercise_hr.employees;
 ```
 
-- - Write a query to get all employee details from the employee table order by first name, descending.
+-- Write a query to get all employee details from the employee table order by first name, descending.
 
 ```sql
 SELECT *
@@ -14,7 +12,7 @@ FROM exercise_hr.employees
 ORDER BY FIRST_NAME DESC;
 ```
 
-- - Write a query to get the employee ID, names (first_name, last_name), salary in ascending order of salary.
+-- Write a query to get the employee ID, names (first_name, last_name), salary in ascending order of salary.
 
 ```sql
 SELECT employee_id, first_name,last_name,salary
@@ -22,72 +20,101 @@ FROM exercise_hr.employees
 ORDER BY salary ASC;
 ```
 
-/*
-
-07-02-2023
+### 07-02-2023
 
 Note: USE exercise_hr;
-Write a query to calculate 171*214+625.
-Write a query to display the names (first_name, last_name) using alias name “First Name", "Last Name" from employees table.
-Write a query to get the names (first_name, last_name), salary, PF of all the employees (PF is calculated as 15% of salary).
-Write a query to get unique department ID from employee table.
-Self-study exercise (Use store):
-Return name, unit price, and a new price for all the products that is equal to 1.1 * unit_price.
 
-- /
-
-SELECT 171*214 + 625;
-
+```sql
 USE exercise_hr;
+```
 
+Write a query to calculate 171*214+625.
+
+```sql
+SELECT 171*214 + 625;
+```
+
+Write a query to display the names (first_name, last_name) using alias name “First Name", "Last Name" from employees table.
+
+```sql
 SELECT first_name AS "First Name",
 last_name AS "Last Name"
 FROM employees ;
+```
 
+Write a query to get the names (first_name, last_name), salary, PF of all the employees (PF is calculated as 15% of salary).
+
+```sql
 SELECT first_name, last_name, salary, salary*.15 AS 'PF'
 FROM employees;
+```
 
+Write a query to get unique department ID from employee table.
+
+```sql
 SELECT DISTINCT DEPARTMENT_ID FROM employees;
+```
 
+Self-study exercise (Use store):
+
+```sql
 USE store;
+```
 
+Return name, unit price, and a new price for all the products that is equal to 1.1 * unit_price.
+
+```sql
 SELECT name,unit_price,(unit_price * 1.1) AS "new price" FROM order_items,order_statuses;
+```
 
-/*
+### 08-02-2023
 
-08-02-2023
+Note: USE exercise_hr;
 
-Note : USE exercise_hr;
-Write a query to display the name (first_name, last_name) and hire date for all employees who were hired in 1987.
-Write a query to display the name (first_name, last_name) and salary for all employees whose salary is not in the range $10,000 through $15,000.
-Write a query to display the name (first_name, last_name) and department ID of all employees in departments 30 or 100 in ascending order.
-Write a query to display the name (first_name, last_name) and salary for all employees whose salary is not in the range $10,000 through $15,000 and are in department 30 or 100.
-Write a query to select all record from employees where last name in 'BLAKE', 'SCOTT', 'KING' and 'FORD'.
-*/
-
+```sql
 USE exercise_hr;
+```
 
-- - Write a query to display the name (first_name, last_name) and hire date for all employees who were hired in 1987.
+ Write a query to display the name (first_name, last_name) and hire date for all employees who were hired in 1987.
+
+```sql
 SELECT first_name,last_name,hire_date
 FROM employees
 WHERE 1987;
-- - Write a query to display the name (first_name, last_name) and salary for all employees whose salary is not in the range $10,000 through $15,000.
+```
+
+Write a query to display the name (first_name, last_name) and salary for all employees whose salary is not in the range $10,000 through $15,000.
+
+```sql
 SELECT first_name,last_name,salary
 FROM employees
 WHERE salary NOT BETWEEN 10000 AND 15000;
-- - Write a query to display the name (first_name, last_name) and department ID of all employees in departments 30 or 100 in ascending order.
+```
+
+ Write a query to display the name (first_name, last_name) and department ID of all employees in departments 30 or 100 in ascending order.
+
+```sql
 SELECT first_name,last_name,department_id
 FROM employees
 WHERE department_id = 30 OR department_id = 100
 ORDER BY department_id ASC;
-- - Write a query to display the name (first_name, last_name) and salary for all employees whose salary is not in the range $10,000 through $15,000 and are in department 30 or 100.
+```
+
+ Write a query to display the name (first_name, last_name) and salary for all employees whose salary is not in the range $10,000 through $15,000 and are in department 30 or 100.
+
+```sql
 SELECT first_name,last_name,salary
 FROM employees
 WHERE (salary NOT BETWEEN 10000 AND 15000) AND (department_id = 30 OR department_id = 100);
-- - Write a query to select all record from employees where last name in 'BLAKE', 'SCOTT', 'KING' and 'FORD'.
+```
+
+Write a query to select all record from employees where last name in 'BLAKE', 'SCOTT', 'KING' and 'FORD'.
+
+```sql
 SELECT *
 FROM employees
 WHERE last_name IN ('BLAKE', 'SCOTT', 'KING','FORD');
+```
 
 /*
 USE store;
@@ -107,43 +134,75 @@ Return products with
 -- 4. last names contains B followed by R or U
 */
 
+```sql
 USE store;
+```
 
+1. Return products with
+… quantity in stock equal to 49, 38, 72
+
+```sql
 SELECT *
 FROM products
 WHERE quantity_in_stock IN (49,38,72);
+```
 
+… no product with quantity_in_stock = 72.
+
+```sql
 SELECT *
 FROM customers
 WHERE birth_date BETWEEN '1990-1-1' AND '2000-1-1';
+```
 
+1. Return customers born
+… between 1/1/1990 and 1/1/2000
+2.  Get the customers whose
+-- 1. addresses contain TRAIL or AVENUE
+-- 2. phone numbers end with 9
+-- 3. phone numbers do not end with 9
+
+```sql
 SELECT *
 FROM customers
 WHERE address LIKE '%TRAIL%' OR address LIKE '%AVENUE%';
+```
 
+```sql
 SELECT *
 FROM customers
 WHERE phone LIKE '%9';
+```
 
+```sql
 SELECT *
 FROM customers
 WHERE phone NOT LIKE '%9';
+```
 
+```sql
 SELECT *
 FROM customers
 WHERE first_name LIKE 'ELKA' OR first_name LIKE 'AMBUR';
+```
 
+```sql
 SELECT *
 FROM customers
 WHERE last_name LIKE '%EY' OR last_name LIKE '%ON';
+```
 
+```sql
 SELECT *
 FROM customers
 WHERE last_name LIKE 'MY%' OR last_name LIKE '%SE%';
+```
 
+```sql
 SELECT *
 FROM customers
 WHERE last_name LIKE '%B%' AND (last_name LIKE '%R%' OR last_name LIKE '%U%');
+```
 
 /*
 USE exercise_hr;
