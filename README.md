@@ -1,3 +1,5 @@
+# SQL Query
+
 ```sql
 SELECT * FROM exercise_hr.employees;
 ```
@@ -120,8 +122,7 @@ WHERE last_name IN ('BLAKE', 'SCOTT', 'KING','FORD');
 USE store;
 ```
 
-1. Return products with
-quantity in stock equal to 49, 38, 72
+1. Return products with quantity in stock equal to 49, 38, 72
 
 ```sql
 SELECT *
@@ -129,8 +130,7 @@ FROM products
 WHERE quantity_in_stock IN (49,38,72);
 ```
 
-1. Return customers born
-between 1/1/1990 and 1/1/2000
+2. Return customers born between 1/1/1990 and 1/1/2000
 
 ```sql
 SELECT *
@@ -138,7 +138,7 @@ FROM customers
 WHERE birth_date BETWEEN '1990-1-1' AND '2000-1-1';
 ```
 
-1. Get the customers whose
+3. Get the customers whose <br>
 3.1 addresses contain TRAIL or AVENUE
 
 ```sql
@@ -147,7 +147,7 @@ FROM customers
 WHERE address LIKE '%TRAIL%' OR address LIKE '%AVENUE%';
 ```
 
-         3.2 phone numbers end with 9
+   3.2 phone numbers end with 9
 
 ```sql
 SELECT *
@@ -155,7 +155,7 @@ FROM customers
 WHERE phone LIKE '%9';
 ```
 
-        3.3 phone numbers do not end with 9
+3.3 phone numbers do not end with 9
 
 ```sql
 SELECT *
@@ -163,8 +163,8 @@ FROM customers
 WHERE phone NOT LIKE '%9';
 ```
 
-4. Get the customers whose
-        4.1 first names are ELKA or AMBUR
+4. Get the customers whose <br>
+4.1. first names are ELKA or AMBUR
 
 ```sql
 SELECT *
@@ -172,7 +172,7 @@ FROM customers
 WHERE first_name LIKE 'ELKA' OR first_name LIKE 'AMBUR';
 ```
 
-        4.2 last names end with EY or ON
+4.2. last names end with EY or ON
 
 ```sql
 SELECT *
@@ -180,7 +180,7 @@ FROM customers
 WHERE last_name LIKE '%EY' OR last_name LIKE '%ON';
 ```
 
-        4.3 last names start with MY or contains SE
+4.3. last names start with MY or contains SE
 
 ```sql
 SELECT *
@@ -188,7 +188,7 @@ FROM customers
 WHERE last_name LIKE 'MY%' OR last_name LIKE '%SE%';
 ```
 
-        4.4 last names contains B followed by R or U
+4.4 last names contains B followed by R or U
 
 ```sql
 SELECT *
@@ -527,9 +527,3 @@ ORDER BY department_name;
 ```
 
 Write a query to find the employee ID, job title, number of days between ending date and starting date for all jobs in department 90.
-
-```sql
-SELECT employee_id, job_title, end_date-start_date Days FROM job_history 
-NATURAL JOIN jobs 
-WHERE department_id=90;
-```
