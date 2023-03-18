@@ -527,3 +527,9 @@ ORDER BY department_name;
 ```
 
 Write a query to find the employee ID, job title, number of days between ending date and starting date for all jobs in department 90.
+
+```sql
+SELECT employee_id, job_title, end_date-start_date Days FROM job_history 
+NATURAL JOIN jobs 
+WHERE department_id=90;
+```
